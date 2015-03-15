@@ -212,8 +212,8 @@ define( [ "yasmf", "app/models/noteStorageSingleton", "text!html/noteListView.ht
               "REPRESENTATION": notes[ note ].representation,
               "MODIFIED": _y.D( notes[ note ].modifiedDate, "D" ),
               "INFO": "" + _y.N( notes[ note ].formattedUnitValue ),
-			  //Setting status variable
-			  "STATUS": notes[ note ].status
+//Setting status variable
+			  "NEW_STATUS": notes[ note ].status.value
             } );
             // attach any event handlers
             var contentsElement = e.querySelector( ".ui-list-item-contents" ),

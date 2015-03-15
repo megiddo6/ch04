@@ -45,6 +45,7 @@ C:\Sandbox\webd265\ch04\platforms\android\assets\www\html\noteListItem.html \
 C:\Sandbox\webd265\ch04\platforms\android\assets\www\html\noteListView.html \
 C:\Sandbox\webd265\ch04\platforms\android\assets\www\html\noteListView_android.html \
 C:\Sandbox\webd265\ch04\platforms\android\assets\www\html\textNoteEditView.html \
+C:\Sandbox\webd265\ch04\platforms\android\assets\www\html\videoNoteEditView.html \
 C:\Sandbox\webd265\ch04\platforms\android\assets\www\img\logo.png \
 C:\Sandbox\webd265\ch04\platforms\android\assets\www\js\app \
 C:\Sandbox\webd265\ch04\platforms\android\assets\www\js\app.js \
@@ -63,10 +64,13 @@ C:\Sandbox\webd265\ch04\platforms\android\assets\www\js\app\models\imageNote.js 
 C:\Sandbox\webd265\ch04\platforms\android\assets\www\js\app\models\mediaManager.js \
 C:\Sandbox\webd265\ch04\platforms\android\assets\www\js\app\models\noteStorage.js \
 C:\Sandbox\webd265\ch04\platforms\android\assets\www\js\app\models\noteStorageSingleton.js \
+C:\Sandbox\webd265\ch04\platforms\android\assets\www\js\app\models\videoManager.js \
+C:\Sandbox\webd265\ch04\platforms\android\assets\www\js\app\models\videoNote.js \
 C:\Sandbox\webd265\ch04\platforms\android\assets\www\js\app\views\audioNoteEditView.js \
 C:\Sandbox\webd265\ch04\platforms\android\assets\www\js\app\views\imageNoteEditView.js \
 C:\Sandbox\webd265\ch04\platforms\android\assets\www\js\app\views\noteListView.js \
 C:\Sandbox\webd265\ch04\platforms\android\assets\www\js\app\views\textNoteEditView.js \
+C:\Sandbox\webd265\ch04\platforms\android\assets\www\js\app\views\videoNoteEditView.js \
 C:\Sandbox\webd265\ch04\platforms\android\assets\www\js\lib\async.js \
 C:\Sandbox\webd265\ch04\platforms\android\assets\www\js\lib\Blob.js \
 C:\Sandbox\webd265\ch04\platforms\android\assets\www\js\lib\cultures \

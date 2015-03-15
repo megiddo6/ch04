@@ -123,7 +123,24 @@ define( [ "yasmf" ], function( _y ) {
       set: self.setName,
       configurable: true
     } );
-    /**
+/******************************************/
+//status set/get function
+	self._status = ""
+    self.getStatus = function() {
+      return self._status;
+    };
+    self.setStatus= function( theStatus ) {
+      self._status = theStatus;
+      self._modifiedDate = new Date();
+      self.notify( "statusChanged" );
+    };
+    Object.defineProperty( self, "status", {
+      get: self.getStatus,
+      set: self.setStatus,
+      configurable: true
+    } );
+/******************************************/
+   /**
      * Instead of the line count, we'll use a generic "unit". For the BaseNote, this
      * is still a line count, but other note types may use it differently.
      *
@@ -208,14 +225,14 @@ define( [ "yasmf" ], function( _y ) {
      * All notes have a representation icon (a page of text, a sound wave, etc)
      */
 	 //Defining status variable
-	self._status = "Archived";
+/*	self._status = "Archived";
     self.getstatus = function() {
       return self._status;
     };
 	Object.defineProperty( self, "status", {
 		get: self.getstatus,
 		Configerable: true
-	} );
+	} );*/
     self._representation = "page-text-new";
     self.getRepresentation = function() {
       return self._representation;
@@ -235,6 +252,10 @@ define( [ "yasmf" ], function( _y ) {
         "createdDate": self.createdDate,
         "modifiedDate": self.modifiedDate,
         "name": self.name,
+/******************************************/
+//status serialization
+		"status": self.status,
+/**********************************************/
         "textContents": self.textContents,
         "mediaContents": self.mediaContents,
         "unitValue": self.unitValue,
@@ -257,6 +278,10 @@ define( [ "yasmf" ], function( _y ) {
         self.uid = aNote.uid;
         self._createdDate = new Date( aNote.createdDate );
         self.name = aNote.name;
+		/******************************************/
+		// status deserialization
+		self.status = aNote.status;
+		/******************************************/
         self.textContents = aNote.textContents;
         self.mediaContents = aNote.mediaContents;
         self.unitValue = aNote.unitValue; // so we don't have to recalc it
@@ -307,6 +332,12 @@ define( [ "yasmf" ], function( _y ) {
         if ( typeof options.name !== "undefined" ) {
           self.name = options.name;
         }
+/********************************************************/
+// added undefined option
+		if ( typeof options.status !== "undefined" ) {
+          self.status = options.status;
+        }
+/****************************************************************/
         if ( typeof options.textContents !== "undefined" ) {
           self.textContents = options.textContents;
         }
