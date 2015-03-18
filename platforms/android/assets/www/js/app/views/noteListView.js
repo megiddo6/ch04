@@ -21,6 +21,8 @@
  * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT
  * OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
  * OTHER DEALINGS IN THE SOFTWARE.
+ *
+ *
  */
 /*jshint
          asi:true,
@@ -66,7 +68,8 @@ define( [ "yasmf", "app/models/noteStorageSingleton", "text!html/noteListView.ht
         var aNoteEditView = noteViewFactory.createNoteEditView( noteType );
         // and tell it about the new note
         aNoteEditView.initWithOptions( {
-          note: aNewNote
+          note: aNewNote,
+          parent: self.parentElement
         } );
         self.navigationController.pushView( aNoteEditView );
       } ).catch( function( anError ) {
@@ -95,6 +98,7 @@ define( [ "yasmf", "app/models/noteStorageSingleton", "text!html/noteListView.ht
      * Edit an existing note. Called when a note item is tapped in the list.
      */
     self.editExistingNote = function( e ) {
+      var theEvent = _y.UI.event.convert( this, e ); // this will be the data row
       // get the UID
       var theUID = this.getAttribute( "data-uid" );
       // create a new editor view
@@ -102,7 +106,8 @@ define( [ "yasmf", "app/models/noteStorageSingleton", "text!html/noteListView.ht
       var aNoteEditView = noteViewFactory.createNoteEditView( aNote.class );
       // and tell it about the note
       aNoteEditView.initWithOptions( {
-        note: aNote
+        note: aNote,
+        parent: self.parentElement
       } );
       self.navigationController.pushView( aNoteEditView );
     };
@@ -212,14 +217,18 @@ define( [ "yasmf", "app/models/noteStorageSingleton", "text!html/noteListView.ht
               "REPRESENTATION": notes[ note ].representation,
               "MODIFIED": _y.D( notes[ note ].modifiedDate, "D" ),
               "INFO": "" + _y.N( notes[ note ].formattedUnitValue ),
-//Setting status variable
-			  "NEW_STATUS": notes[ note ].status.value
+			  
+			  
+/* Added status variable/identifier */
+			  "NEW_STATUS": notes[ note ]._status
+			  
+			  
             } );
             // attach any event handlers
             var contentsElement = e.querySelector( ".ui-list-item-contents" ),
               actionElement = e.querySelector( ".ui-list-action" );
             Hammer( contentsElement ).on( "tap", self.editExistingNote );
-            // right-to-left swipe exposes action, and when it occurs, we need add code to all other itmes
+            // right-to-left swipe exposes action, and when it occurs, we need add code to all other items
             // to hide all actions
             Hammer( contentsElement, {
               swipe_velocity: 0.1,

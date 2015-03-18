@@ -1,2 +1,2 @@
-C:\Sandbox\webd265\ch04\platforms\android\CordovaLib\ant-build\AndroidManifest.xml : \
-C:\Sandbox\webd265\ch04\platforms\android\CordovaLib\AndroidManifest.xml \
+C:\Users\Megiddo\Desktop\android_builds\WK4\platforms\android\CordovaLib\ant-build\AndroidManifest.xml : \
+C:\Users\Megiddo\Desktop\android_builds\WK4\platforms\android\CordovaLib\AndroidManifest.xml \

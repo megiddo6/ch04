@@ -1,2 +1,2 @@
-C:\Sandbox\webd265\ch04\platforms\android\ant-build\AndroidManifest.xml : \
-C:\Sandbox\webd265\ch04\platforms\android\AndroidManifest.xml \
+c:\Users\Megiddo\Desktop\android_builds\WK4\platforms\android\ant-build\AndroidManifest.xml : \
+c:\Users\Megiddo\Desktop\android_builds\WK4\platforms\android\AndroidManifest.xml \

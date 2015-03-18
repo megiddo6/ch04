@@ -21,6 +21,18 @@
  * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT
  * OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
  * OTHER DEALINGS IN THE SOFTWARE.
+ 
+
+ 
+ COMMENT LIST
+ 
+	   -Added status pointer (Line: 73 )
+	   -Getting the status value (Line: 85 )
+	   -Added function to record status change (Line: 93 )
+	   -Added Variable/Identifier, gets status and sets it to %NEW_STATS% (Line: 127 )
+	   -Selecting div tag with CSS (Line: 143 )
+	   -Setting up click listeners (Line: 160 )
+	   
  */
 /*jshint
          asi:true,
@@ -57,7 +69,10 @@ define( [ "yasmf", "app/models/noteStorageSingleton",
     self._contentsEditor = null;
     self._backButton = null;
     self._deleteButton = null;
-	self._status = status.value;
+	
+	/* Added status pointer */
+	self._currentStatus = null;
+	
     // the note we're editing
     self._note = null;
     /**
@@ -66,9 +81,21 @@ define( [ "yasmf", "app/models/noteStorageSingleton",
      */
     self.saveNote = function() {
       self._note.name = self._nameEditor.innerText;
-      self._note.textContents = self._contentsEditor.value;
+	  
+	  /* Getting the status value */
+	  self._note.status = self._currentStatus.value;
+	  
+	  self._note.textContents = self._contentsEditor.value;
       noteStorageSingleton.saveNote( self._note );
-    };
+	}
+	
+	
+	/* Added function to record status change */
+	self.changeStatus = function () {
+	self._statusChange = y.T( "test" )
+	 };
+	 
+	 
     /**
      * Delete the specific note. NO WARNING!
      */
@@ -95,10 +122,9 @@ define( [ "yasmf", "app/models/noteStorageSingleton",
         "NOTE_NAME": self._note.name,
         "NOTE_CONTENTS": self._note.textContents,
         "BACK": _y.T( "BACK" ),
-		/******************************************/
-		//status variable
-		"NEW_STATUS": self._note.status.value,
-        "DELETE_NOTE": _y.T( "app.nev.DELETE_NOTE" )
+        "DELETE_NOTE": _y.T( "app.nev.DELETE_NOTE" ),
+/* Added Variable/Identifier, gets status and sets it to %NEW_STATS% */
+		"NEW_STATUS": self._note.status 
       } );
     };
     /**
@@ -112,12 +138,31 @@ define( [ "yasmf", "app/models/noteStorageSingleton",
       self._nameEditor = self.element.querySelector( ".ui-navigation-bar .ui-title" );
       self._backButton = self.element.querySelector(
         ".ui-navigation-bar .ui-bar-button-group.ui-align-left .ui-back-button" );
+		
+		
+		/* Selecting div tag with CSS...
+			Caleb Note: I would not do this ever again. It's messy and if you decide
+			to change your CSS class at all then it will break the code. Too easy to
+			break and would prefer to grab something with an ID... We kept it as a 
+			class to remain consistent with the rest of the code */
+	  self._currentStatus = self.element.querySelector(
+        ".ui-navigation-bar .ui-bar-button-group.ui-align-right .ui-new-status" );
+		
+		
       self._deleteButton = self.element.querySelector(
         ".ui-navigation-bar .ui-bar-button-group.ui-align-right .ui-bar-button" );
       self._scrollContainer = self.element.querySelector( ".ui-scroll-container" );
       self._contentsEditor = self.element.querySelector( ".ui-text-box" );
       Hammer( self._backButton ).on( "tap", self.goBack );
       Hammer( self._deleteButton ).on( "tap", self.deleteNote );
+	  
+	  
+	  /* Setting up click listeners */
+	  _y.UI.event.addListener( self._currentStatus, "click", self.changeStatus)
+      _y.UI.event.addListener( self._backButton, "click", self.goBack )
+      _y.UI.event.addListener( self._deleteButton, "click", self.deleteNote );
+	  
+	  
       _y.UI.backButton.addListenerForNotification( "backButtonPressed", self.goBack );
     };
     /**

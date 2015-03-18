@@ -19,9 +19,11 @@
  * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT
  * OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
  * OTHER DEALINGS IN THE SOFTWARE.
+ *
  */
 
 /* General styles */
+
 
 /* background color */
 
@@ -241,6 +243,12 @@ body.android {
 .android .noteListView .ui-list-item:active .ui-indicator {
   background-color: #242424;
 }
+/* Custom CSS for status */
+#status {
+	color: black;
+	font-size: 18px;
+	padding-left: 4px;
+}
 /*
  * NOTE EDIT VIEW styles; these apply to each edit view
  */
@@ -399,3 +407,5 @@ body.android {
   mask-position-y: calc(100% + 1px);
   background-color: black;
 }
+
+

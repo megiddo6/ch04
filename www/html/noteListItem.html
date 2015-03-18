@@ -19,6 +19,7 @@
       LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT
       OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
       OTHER DEALINGS IN THE SOFTWARE.
+
     -->
 
 <body>
@@ -26,12 +27,11 @@
     <div class="ui-glyph note-representation ui-glyph-%REPRESENTATION%"></div>
     <div class="ui-label note-name">%NAME%</div>
     <div class="ui-label note-modified-date">%MODIFIED%</div>
-    <!-- inserting status section -->
-    <div>%NEW_STATUS%</div> 
+    <!-- Added status div -->
+    <div class="ui-label note-status" id="status">%NEW_STATUS%</div>
     <div class="ui-label note-info">%INFO%</div>
     <div class="ui-indicator ui-arrow-direction-right"></div>
   </div>
-  
   <div class="ui-list-action-group">
     <div class="ui-list-action ui-background-destructive-color" data-uid="%UID%">
       <div>%TRASH%</div>

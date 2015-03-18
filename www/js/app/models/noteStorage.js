@@ -68,6 +68,8 @@ define( [ "yasmf", "Q", "app/factories/noteFactory" ], function( _y, Q, noteFact
     self.registerNotification( "noteRemoved" );
     self.registerNotification( "noteFailedRemoving" );
     self.registerNotification( "noteCreated" );
+	/* Added status notification */
+	self.registerNotification( "statusChanged" );
     // the file manager
     self._fileManager = null;
     self.getFileManager = function() {
